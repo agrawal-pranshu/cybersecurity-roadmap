@@ -1,0 +1,136 @@
+
+
+MYSQL
+
+1.To create an user with specific passworda and grand the priviledges
+
+=>CREATE USER 'ashwin'@'localhost' IDENTIFIED BY 'ashwin10';
+
+=>GRANT ALL PRIVILEDGES ON *.* TO 'ashwin'@'localhost';
+
+
+=>SELECT USER , host from MySQL.user;
+
+=>SHOW GRANTS FOR 'ashwin10'@'localhost';
+
+
+2.create an databse and verify it
+=>create database ashwin;
+=>show databases;
+=>use ashwin;
+
+3.create table verify it
+=>create table ashwin10(id primary key int , name varchar(50));
+=>desc ashwin10;
+=>show tables;
+
+4.inserting the data in tables
+=>insert into ashwin1 (name) values('ashwin');
+=>insert into ashwin1 values (1,'ashwin'),(2,'atharva');
+
+5.select the data from table
+=>SELECT *FROM ashwin1;
+=>SELECT name from ashwin1;
+
+
+6.add new colum in table
+=>ALTER TABLE ashwin1 ADD email VARCHAR(50);
+
+7.update the record in table
+=>UPDATE ashwin1 SET email = ashwin@gmail.com, column2 = new_value2 where id = 1;
+
+8.DELETE data in table
+=>DELETE from ashwin1 where id =2;
+=>alter table ashwin1 drop column email;
+
+9.drop the table
+=>DROP table ashwin1;
+
+10.where with and , or
+=> select *from ashwin1 where email ='ashwin@gmail.com' and name='ashwin';
+=>select  *from ashwin1 where email='ashwin@gmail.com' or name ='atharva';
+
+11.where with IN and NOT IN
+=>select *from ashwin1 where city IN ('pune','kolhapur','satara');
+=>select *from ashwin1 where city NOT IN ('pune','kolhapur','satara');
+
+12.between and not between
+=>select *from ashwin1 where id between 1 and 5;
+=>select *from ashwin1 where id not between 1 and 5;
+
+13.order by 
+=>select *from ashwin1 order by name ASC/DESC;
+
+14.Group by
+=>SELECT city, count(city) as no from ashwin1 group by city;
+=>SELECT city, count(city) as no  from ashwin1 group by city having count(city) >2;
+
+
+15.aggregate functions(these are  not allowed in where )
+=>count()
+SELECT COUNT(*) AS total_users FROM ashwin1;
+
+=>sum()
+SELECT COUNT(*) AS total_users FROM ashwin1;
+
+=>avg()
+SELECT MIN(id) AS lowest_id FROM ashwin1;
+
+=>min()
+SELECT MIN(id) AS lowest_id FROM ashwin1;
+
+=>max()
+SELECT MIN(id) AS lowest_id FROM ashwin1;
+
+16.Inner join
+=>SELECT ashwin1.name, orders.item 
+FROM ashwin1
+INNER JOIN orders ON ashwin1.id = orders.user_id;
+
+
+17.left join
+=>SELECT ashwin1.name, orders.item 
+FROM ashwin1
+LEFT JOIN orders ON ashwin1.id = orders.user_id;
+
+18.Right join
+=>SELECT ashwin1.name, orders.item 
+FROM ashwin1
+RIGHT JOIN orders ON ashwin1.id = orders.user_id;
+
+19.single row sub query
+=>SELECT name, salary 
+FROM employees 
+WHERE salary > (
+    SELECT AVG(salary) 
+    FROM employees
+);
+
+
+20.multi line sub query
+Any=>SELECT name, salary 
+FROM employees 
+WHERE salary > ANY (
+    SELECT salary 
+    FROM employees 
+    WHERE department = 'Sales'
+);
+
+ALL=>SELECT name, salary 
+FROM employees 
+WHERE salary > ALL (
+    SELECT salary 
+    FROM employees 
+    WHERE department = 'Support'
+);
+
+
+in=>SELECT * FROM ashwin1 
+WHERE id IN (
+    SELECT user_id 
+    FROM orders
+);
+
+
+
+
