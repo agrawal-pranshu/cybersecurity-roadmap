@@ -1,0 +1,7 @@
+*****S3 Bucket*****
+Search S3 (Simple Storage Service)
+Create Bucket
+Give UNIQUE Bucket Name
+Upload files
+Empty Bucket (After Verification)
+Delete Bucket

@@ -1,0 +1,15 @@
+*****AWS EC2 Setup*****
+EC2 Instance (Elastic Compute Cloud)
+Name Instance
+Choose Ubuntu
+Other keep default
+Give key value pair name
+.)select .pem ----> If base machine is Linux (OpenSSH)
+.)select .ppk ----> If base machine is Windows(puTTY)
+Edit Network Settings:
+.)Add security group rule
+.)Type --> HTTP , Source type --> Anywhere
+.)Type --> HTTPS , Source type --> Anywhere
+Advanced Details --> User data --> Add script to start Apache Service(https://github.com/newdelthis/demo/blob/main/aws_ec2_ubuntu_startup_script.sh)
+Finally, Click "Launch Instance"
+Don't forget to stop the Instance(After verifying everything)
