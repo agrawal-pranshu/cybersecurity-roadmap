@@ -1,0 +1,18 @@
+1) Creating a RSA Key
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out bob.key
+
+2) Extracting Public Key
+openssl pkey -in bob.key -pubout -out bob.pub
+
+3) Viewing both the keys:
+Private: openssl pkey -in bob.key -text -noout
+Public: openssl pkey -pubin -in bob.pub -text -noout
+
+4) Encrypt message using Bob public key
+openssl pkeyutl -encrypt -pubin -inkey bob.pub -in msg.txt -out msg.enc
+
+5) Decrypt message using Bob private key
+openssl pkeyutl -decrypt -inkey bob.key -in msg.enc -out msg.dec
+
+6) To check 
+diff msg.enc msg.dec
